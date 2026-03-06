@@ -1,5 +1,5 @@
 package com.example.projet.entity;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
@@ -20,8 +20,10 @@ public class Matiere {
     private String nom;
 
     @OneToOne(mappedBy = "matiere")
+    @JsonIgnore 
     private User enseignant; // chaque matière a un seul prof
 
     @OneToMany(mappedBy = "matiere")
+    @JsonIgnore 
     private List<SupportCours> supports;
 }

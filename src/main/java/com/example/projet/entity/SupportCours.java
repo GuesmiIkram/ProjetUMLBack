@@ -2,7 +2,7 @@ package com.example.projet.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "support_cours")
@@ -31,9 +31,11 @@ public class SupportCours {
 
     @ManyToOne
     @JoinColumn(name = "enseignant_id", nullable = false)
+    @JsonIgnore 
     private User enseignant;
 
     @ManyToOne
     @JoinColumn(name = "matiere_id", nullable = false)
+    @JsonIgnore 
     private Matiere matiere;
 }

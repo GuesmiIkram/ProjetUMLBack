@@ -43,6 +43,7 @@ public ResponseEntity<?> login(@RequestBody LoginRequest request) {
             "message", "Connexion réussie",
             "role", user.get().getRole(),
             "prenom", user.get().getPrenom(),
+            "nom", user.get().getNom(),
             "id", user.get().getId()
         ));
     } else {
