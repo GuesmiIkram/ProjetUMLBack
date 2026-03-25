@@ -161,4 +161,25 @@ public ResponseEntity<List<SupportCours>> getSupportsByEnseignant(@PathVariable 
         List<SupportCours> supports = supportRepository.findByEnseignantId(enseignantId);
         return ResponseEntity.ok(supports);
     }*/
+
+@GetMapping("/matiere/{matiereId}")
+public ResponseEntity<List<SupportCours>> getSupportsByMatiere(@PathVariable Long matiereId) {
+
+    List<SupportCours> supports = supportRepository.findByMatiereId(matiereId);
+
+    return ResponseEntity.ok(supports);
+}
+
+@GetMapping("/matiere/{matiereId}/type/{type}")
+public ResponseEntity<List<SupportCours>> getSupportsByMatiereAndType(
+        @PathVariable Long matiereId,
+        @PathVariable String type) {
+
+    TypeSupport typeSupport = TypeSupport.valueOf(type.toUpperCase());
+
+    List<SupportCours> supports = supportRepository
+            .findByMatiereIdAndType(matiereId, typeSupport);
+
+    return ResponseEntity.ok(supports);
+}
 }
